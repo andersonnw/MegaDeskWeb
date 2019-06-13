@@ -9,17 +9,17 @@ namespace MegaDeskWeb.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Desk",
+                name: "Desktop",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    width = table.Column<int>(nullable: false),
-                    numberOfDrawer = table.Column<int>(nullable: false)
+                    Cost = table.Column<float>(nullable: false),
+                    Type = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Desk", x => x.ID);
+                    table.PrimaryKey("PK_Desktop", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -34,6 +34,28 @@ namespace MegaDeskWeb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Shipping", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Desk",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Depth = table.Column<int>(nullable: false),
+                    Width = table.Column<int>(nullable: false),
+                    MaterialID = table.Column<int>(nullable: true),
+                    NumberOfDrawer = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Desk", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Desk_Desktop_MaterialID",
+                        column: x => x.MaterialID,
+                        principalTable: "Desktop",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,6 +88,11 @@ namespace MegaDeskWeb.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Desk_MaterialID",
+                table: "Desk",
+                column: "MaterialID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DeskQuote_DeskID",
                 table: "DeskQuote",
                 column: "DeskID");
@@ -86,6 +113,9 @@ namespace MegaDeskWeb.Migrations
 
             migrationBuilder.DropTable(
                 name: "Shipping");
+
+            migrationBuilder.DropTable(
+                name: "Desktop");
         }
     }
 }

@@ -25,11 +25,17 @@ namespace MegaDeskWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("numberOfDrawer");
+                    b.Property<int>("Depth");
 
-                    b.Property<int>("width");
+                    b.Property<int?>("MaterialID");
+
+                    b.Property<int>("NumberOfDrawer");
+
+                    b.Property<int>("Width");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("MaterialID");
 
                     b.ToTable("Desk");
                 });
@@ -59,6 +65,21 @@ namespace MegaDeskWeb.Migrations
                     b.ToTable("DeskQuote");
                 });
 
+            modelBuilder.Entity("MegaDeskWeb.Models.Desktop", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("Cost");
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Desktop");
+                });
+
             modelBuilder.Entity("MegaDeskWeb.Models.Shipping", b =>
                 {
                     b.Property<int>("ID")
@@ -72,6 +93,13 @@ namespace MegaDeskWeb.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Shipping");
+                });
+
+            modelBuilder.Entity("MegaDeskWeb.Models.Desk", b =>
+                {
+                    b.HasOne("MegaDeskWeb.Models.Desktop", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialID");
                 });
 
             modelBuilder.Entity("MegaDeskWeb.Models.DeskQuote", b =>

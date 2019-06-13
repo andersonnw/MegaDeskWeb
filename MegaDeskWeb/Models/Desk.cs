@@ -11,7 +11,7 @@ namespace MegaDeskWeb.Models
 
         public int Depth { get; set; }
         public int Width { get; set; }
-        public Desktop Material;
+        public Desktop Material { get; set; }
         public int NumberOfDrawer { get; set; }
 
     }
