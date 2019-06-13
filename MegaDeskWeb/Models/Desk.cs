@@ -8,9 +8,11 @@ namespace MegaDeskWeb.Models
     public class Desk
     {
         public int ID { get; set; }
-        public int width { get; set; }
+
+        public int Depth { get; set; }
+        public int Width { get; set; }
         public Desktop Material;
-        public int numberOfDrawer { get; set; }
+        public int NumberOfDrawer { get; set; }
 
     }
 }
