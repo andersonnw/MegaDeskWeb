@@ -14,5 +14,7 @@ namespace MegaDeskWeb.Models
         }
 
         public DbSet<MegaDeskWeb.Models.DeskQuote> DeskQuote { get; set; }
+        public DbSet<MegaDeskWeb.Models.Desktop> Desktop { get; set; }
+        public DbSet<MegaDeskWeb.Models.Shipping> Shipping { get; set; }
     }
 }
