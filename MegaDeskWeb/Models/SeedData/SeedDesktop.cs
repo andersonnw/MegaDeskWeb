@@ -24,8 +24,33 @@ namespace MegaDeskWeb.Models.SeedData
                 context.Desktop.Add(
                     new Desktop
                     {
-                        
-                    });
+                        Cost = 200 ,
+                        Type = "Oak"
+                    },
+                    new Desktop
+                    {
+                        Cost = 100,
+                        Type = "Laminate"
+                    },
+                    new Desktop
+                    {
+                        Cost = 50,
+                        Type = "Pine"
+                    },
+
+                    new Desktop
+                    {
+                        Cost = 300,
+                        Type = "Rosewood"
+                    },
+
+                    new Desktop
+                    {
+                        Cost = 125,
+                        Type = "Veneer"
+                    }
+
+                    );
                 context.SaveChanges();
             }
         }
