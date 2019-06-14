@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MegaDeskWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MegaDeskWeb.Pages.DeskQuotes
 {
@@ -25,6 +26,7 @@ namespace MegaDeskWeb.Pages.DeskQuotes
 
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
+        public IList<Shipping> shippings { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -34,9 +36,12 @@ namespace MegaDeskWeb.Pages.DeskQuotes
             }
 
             _context.DeskQuote.Add(DeskQuote);
+            shippings = await _context.Shipping.ToListAsync();
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
+
     }
 }

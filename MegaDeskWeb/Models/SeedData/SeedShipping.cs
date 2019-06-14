@@ -21,10 +21,34 @@ namespace MegaDeskWeb.Models.SeedData
                     return;   // DB has been seeded
                 }
 
-                context.Shipping.Add(
+                context.Shipping.AddRange(
                     new Shipping
                     {
-
+                        Type = "3-Day",
+                        CostSmall = 60.0f,
+                        CostMed = 70.0f,
+                        CostLarge = 80.0f
+                    },
+                    new Shipping
+                    {
+                        Type = "5-Day",
+                        CostSmall = 40.0f,
+                        CostMed = 50.0f,
+                        CostLarge = 60.0f
+                    },
+                    new Shipping
+                    {
+                        Type = "7-Day",
+                        CostSmall = 30.0f,
+                        CostMed = 35.0f,
+                        CostLarge = 40.0f
+                    },
+                    new Shipping
+                    {
+                        Type = "14-Day",
+                        CostSmall = 0.0f,
+                        CostMed = 0.0f,
+                        CostLarge = 0.0f
                     });
                 context.SaveChanges();
             }

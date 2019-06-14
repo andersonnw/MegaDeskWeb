@@ -9,6 +9,9 @@ namespace MegaDeskWeb.Models
     {
         public int ID { get; set; }
         public string Type { get; set; }
-        public float Cost { get; set; }
+        public float CostSmall { get; set; }
+        public float CostMed { get; set; }
+        public float CostLarge { get; set; }
+
     }
 }
