@@ -21,7 +21,7 @@ namespace MegaDeskWeb.Models.SeedData
                     return;   // DB has been seeded
                 }
 
-                context.Desktop.Add(
+                context.Desktop.AddRange(
                     new Desktop
                     {
                         Cost = 200 ,
