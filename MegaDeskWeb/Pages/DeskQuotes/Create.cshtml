@@ -9,7 +9,7 @@
 
 <h4>DeskQuote</h4>
 <hr />
-<div class="row">
+<div class="row" style="display:flex; justify-content:space-between">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -53,6 +53,29 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+    </div>
+
+    <div class="col-sm-6" style="background-color: powderblue; display:flex; flex-wrap: wrap; justify-content: space-between">
+        <figure>
+            <img src="~/Images/Laminate.jpg" />
+            <figcaption>Laminate</figcaption>
+        </figure>
+        <figure>
+            <img src="~/Images/Oak.jpg" />
+            <figcaption>Oak</figcaption>
+        </figure>
+        <figure>
+            <img src="~/Images/Pine.jpg" />
+            <figcaption>Pine</figcaption>
+        </figure>
+        <figure>
+            <img src="~/Images/Rosewood.jpg" />
+            <figcaption>Rosewood</figcaption>
+        </figure>
+        <figure>
+            <img src="~/Images/Veneer.jpg" />
+            <figcaption>Veneer</figcaption>
+        </figure>
     </div>
 </div>
 

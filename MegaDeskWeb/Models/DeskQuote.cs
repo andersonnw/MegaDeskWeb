@@ -9,7 +9,7 @@ namespace MegaDeskWeb.Models
     public class DeskQuote
     {
         public int ID { get; set; }
-
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Please enter a name without numbers or symbols")]
         public string CustomerName { get; set; }
 
         [DataType(DataType.Date)]
