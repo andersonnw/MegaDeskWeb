@@ -72,7 +72,6 @@ namespace MegaDeskWeb.Pages.DeskQuotes
             int depth = DeskQuote.Desk.Depth;
             int numDraw = DeskQuote.Desk.NumberOfDrawer;
 
-            string shipType = DeskQuote.Shipping.Type;
 
             int area = width * depth;
             
