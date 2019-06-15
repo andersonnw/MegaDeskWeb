@@ -50,54 +50,27 @@ namespace MegaDeskWeb.Pages.DeskQuotes
 
         public async Task<IActionResult> OnPostAsync()
         {
-            calculatePrice();
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            int matID = Int32.Parse(Request.Form["materialSelect"].ToString());
+            DeskQuote.Desk.Material = (Desktop)(from b in _context.Desktop
+                                      where b.ID.Equals(matID)
+                                      select b).FirstOrDefault();
 
+            int shipID = Int32.Parse(Request.Form["shipSelect"].ToString());
+            DeskQuote.Shipping = (Shipping)(from b in _context.Shipping
+                                                where b.ID.Equals(shipID)
+                                                select b).FirstOrDefault();
+
+            DeskQuote.calculatePrice();
             _context.DeskQuote.Add(DeskQuote);
 
 
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
-        }
-
-        public void calculatePrice()
-        {
-            float price = 200.0f;
-
-            int width = DeskQuote.Desk.Width;
-            int depth = DeskQuote.Desk.Depth;
-            int numDraw = DeskQuote.Desk.NumberOfDrawer;
-
-
-            int area = width * depth;
-            
-            if (area > 1000)
-            {
-                price += (area - 1000);
-            }
-
-            price += numDraw * 50.0f;
-
-            price += DeskQuote.Desk.Material.Cost;
-
-            if(area < 1000)
-                    {
-                price += DeskQuote.Shipping.CostSmall;                
-                    }
-            else if(area <= 2000)
-                    {
-                        price += DeskQuote.Shipping.CostMed;
-                    }
-            else
-                    {
-                        price += DeskQuote.Shipping.CostLarge;
-                    }
-
-            DeskQuote.Price = price;
         }
 
     }

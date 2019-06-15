@@ -13,6 +13,7 @@ namespace MegaDeskWeb.Pages.DeskQuotes
     public class EditModel : PageModel
     {
         private readonly MegaDeskWeb.Models.MegaDeskWebContext _context;
+        
 
         public EditModel(MegaDeskWeb.Models.MegaDeskWebContext context)
         {
@@ -35,6 +36,7 @@ namespace MegaDeskWeb.Pages.DeskQuotes
             {
                 return NotFound();
             }
+
             return Page();
         }
 
@@ -62,6 +64,7 @@ namespace MegaDeskWeb.Pages.DeskQuotes
                     throw;
                 }
             }
+
 
             return RedirectToPage("./Index");
         }

@@ -38,28 +38,29 @@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].Price)
             </th>
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.DeskQuote)
         {
-            <tr >
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td style="text-align:right">
-                    <a asp-page="./Edit" asp-route-id="@item.ID" style="color: darkblue">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID" style="color: darkblue">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID" style="color: darkblue">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td style="text-align:right">
+                <a asp-page="./Edit" asp-route-id="@item.ID" style="color: darkblue">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID" style="color: darkblue">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID" style="color: darkblue">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

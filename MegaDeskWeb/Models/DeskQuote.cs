@@ -18,5 +18,41 @@ namespace MegaDeskWeb.Models
         public float Price { get; set; }
         public Shipping Shipping { get; set; }
 
+        public void calculatePrice()
+        {
+            float price = 200.0f;
+
+            int width = Desk.Width;
+            int depth = Desk.Depth;
+            int numDraw = Desk.NumberOfDrawer;
+
+
+            int area = width * depth;
+
+            if (area > 1000)
+            {
+                price += (area - 1000);
+            }
+
+            price += numDraw * 50.0f;
+
+            price += Desk.Material.Cost;
+
+            if (area < 1000)
+            {
+                price += Shipping.CostSmall;
+            }
+            else if (area <= 2000)
+            {
+                price += Shipping.CostMed;
+            }
+            else
+            {
+                price += Shipping.CostLarge;
+            }
+
+            Price = price;
+        }
+
     }
 }
