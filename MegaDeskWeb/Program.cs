@@ -30,6 +30,7 @@ namespace MegaDeskWeb
                         GetRequiredService<MegaDeskWebContext>();
                     context.Database.Migrate();
                     SeedShipping.Initialize(services);
+                    SeedDesktop.Initialize(services);
                 }
                 catch (Exception ex)
                 {
