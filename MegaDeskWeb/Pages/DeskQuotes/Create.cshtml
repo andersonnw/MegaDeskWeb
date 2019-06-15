@@ -40,12 +40,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.Desk.Material" class="control-label"></label>
-                <input asp-for="DeskQuote.Desk.Material.Type" class="form-control" />
+                <select name="maaterialSelect" asp-items="Model.materials"></select>
                 <span asp-validation-for="DeskQuote.Desk.Material.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.Shipping" class="control-label"></label>
-                <input asp-for="DeskQuote.Shipping.Type" class="form-control" />
+                <select name="shipSelect" asp-items="Model.shippings"></select>
                 <span asp-validation-for="DeskQuote.Shipping.Type" class="text-danger"></span>
             </div>
 
